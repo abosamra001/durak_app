@@ -67,8 +67,8 @@ abstract class AppLocalizations {
 
   final String localeName;
 
-  static AppLocalizations? of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations);
+  static AppLocalizations of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
   static const LocalizationsDelegate<AppLocalizations> delegate =
@@ -98,11 +98,71 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
+  /// No description provided for @appname.
+  ///
+  /// In en, this message translates to:
+  /// **'Dorak'**
+  String get appname;
+
   /// No description provided for @welcome.
   ///
   /// In en, this message translates to:
   /// **'Welcome'**
   String get welcome;
+
+  /// No description provided for @onChairNow.
+  ///
+  /// In en, this message translates to:
+  /// **'On the Chair now'**
+  String get onChairNow;
+
+  /// No description provided for @remaining.
+  ///
+  /// In en, this message translates to:
+  /// **'Remaining'**
+  String get remaining;
+
+  /// No description provided for @addnew.
+  ///
+  /// In en, this message translates to:
+  /// **'Add New'**
+  String get addnew;
+
+  /// No description provided for @appdiscription.
+  ///
+  /// In en, this message translates to:
+  /// **'Make it easy to manage your customers'**
+  String get appdiscription;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
+
+  /// No description provided for @waitingqueue.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting queue'**
+  String get waitingqueue;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @calender.
+  ///
+  /// In en, this message translates to:
+  /// **'Calender'**
+  String get calender;
 }
 
 class _AppLocalizationsDelegate

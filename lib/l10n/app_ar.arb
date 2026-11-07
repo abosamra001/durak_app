@@ -1,4 +1,14 @@
 {
-    "@@locale": "ar",
-    "welcome": "مرحبا"
+  "@@locale": "ar",
+  "appname": "دورك",
+  "welcome": "مرحبا",
+  "onChairNow": "الأن علي الكرسي",
+  "remaining": "المتبقي",
+  "addnew": "إضافة جديد",
+  "appdiscription": "أدر عملاءك بسهولة",
+  "done": "تم",
+  "waitingqueue": "قائمة الانتظار",
+  "home": "الرئيسية",
+  "settings": "الاعدادات",
+  "calender": "التقويم"
 }

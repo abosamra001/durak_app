@@ -9,5 +9,35 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
+  String get appname => 'دورك';
+
+  @override
   String get welcome => 'مرحبا';
+
+  @override
+  String get onChairNow => 'الأن علي الكرسي';
+
+  @override
+  String get remaining => 'المتبقي';
+
+  @override
+  String get addnew => 'إضافة جديد';
+
+  @override
+  String get appdiscription => 'أدر عملاءك بسهولة';
+
+  @override
+  String get done => 'تم';
+
+  @override
+  String get waitingqueue => 'قائمة الانتظار';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get settings => 'الاعدادات';
+
+  @override
+  String get calender => 'التقويم';
 }

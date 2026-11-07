@@ -1,8 +1,0 @@
-# Dorak App (queueing management system)
-
-
-
-# Out of scope 
-1- make the app manage multi barbers
-2- app has a cloud backup for his data and clients
-3- think of it as SaaS  

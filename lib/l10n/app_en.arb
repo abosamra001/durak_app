@@ -1,4 +1,14 @@
 {
-    "@@locale": "en",
-    "welcome": "Welcome"
+  "@@locale": "en",
+  "appname": "Dorak",
+  "welcome": "Welcome",
+  "onChairNow": "On the Chair now",
+  "remaining": "Remaining",
+  "addnew": "Add New",
+  "appdiscription": "Make it easy to manage your customers",
+  "done": "Done",
+  "waitingqueue": "Waiting queue",
+  "home": "Home",
+  "settings": "Settings",
+  "calender": "Calender"
 }
