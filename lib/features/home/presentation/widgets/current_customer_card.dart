@@ -1,9 +1,8 @@
 import 'package:durak_app/core/helpers/extensions.dart';
 import 'package:durak_app/core/helpers/spacer.dart';
-import 'package:durak_app/features/home/presentation/widgets/custom_button.dart';
+import 'package:durak_app/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 
 class CurrentCustomerCard extends StatelessWidget {
   const CurrentCustomerCard({super.key});
@@ -21,7 +20,7 @@ class CurrentCustomerCard extends StatelessWidget {
               crossAxisAlignment: .start,
               children: [
                 Text(
-                  formatDate(context, DateTime.now()),
+                  context.dateFormater(DateTime.now()),
                   style: context.themeData.textTheme.bodyLarge,
                 ),
                 Text(
@@ -130,9 +129,4 @@ class CurrentCustomerCard extends StatelessWidget {
       ],
     );
   }
-}
-
-String formatDate(BuildContext context, DateTime date) {
-  final locale = Localizations.localeOf(context).toString();
-  return DateFormat.MMMMEEEEd(locale).format(date);
 }

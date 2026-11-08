@@ -21,7 +21,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get remaining => 'المتبقي';
 
   @override
-  String get addnew => 'إضافة جديد';
+  String get addnewcustomer => 'إضافة زبون جديد';
 
   @override
   String get appdiscription => 'أدر عملاءك بسهولة';
@@ -40,4 +40,61 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get calender => 'التقويم';
+
+  @override
+  String get namelabel => 'الإسم';
+
+  @override
+  String get namehint => 'ادخل الإسم';
+
+  @override
+  String get addfromcontacts => 'إضافة من جهات الاتصال';
+
+  @override
+  String get addmanually => 'إضافة يدويا';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get add => 'إضافة';
+
+  @override
+  String get phonenumberlabel => 'رقم الهاتف';
+
+  @override
+  String get phonenumberhint => 'أدخل رقم هاتف';
+
+  @override
+  String get noteslabel => 'ملاحظات';
+
+  @override
+  String get noteshint => 'إضافة ملاحظة';
+
+  @override
+  String get datelabel => 'التاريخ';
+
+  @override
+  String get datehint => 'اختر التاريخ';
+
+  @override
+  String get requiredfield => 'هذا الحقل مطلوب';
+
+  @override
+  String get appprefs => 'تفضيلات التطبيق';
+
+  @override
+  String get apptheme => 'سمة التطبيق';
+
+  @override
+  String get applocale => 'لغة التطبيق';
+
+  @override
+  String get appthemesystem => 'النظام';
+
+  @override
+  String get appthemedark => 'داكن';
+
+  @override
+  String get appthemelight => 'فاتح';
 }

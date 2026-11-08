@@ -122,16 +122,16 @@ abstract class AppLocalizations {
   /// **'Remaining'**
   String get remaining;
 
-  /// No description provided for @addnew.
+  /// No description provided for @addnewcustomer.
   ///
   /// In en, this message translates to:
-  /// **'Add New'**
-  String get addnew;
+  /// **'Add New Customer'**
+  String get addnewcustomer;
 
   /// No description provided for @appdiscription.
   ///
   /// In en, this message translates to:
-  /// **'Make it easy to manage your customers'**
+  /// **'Manage your Customers easly'**
   String get appdiscription;
 
   /// No description provided for @done.
@@ -163,6 +163,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Calender'**
   String get calender;
+
+  /// No description provided for @namelabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get namelabel;
+
+  /// No description provided for @namehint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a name'**
+  String get namehint;
+
+  /// No description provided for @addfromcontacts.
+  ///
+  /// In en, this message translates to:
+  /// **'Add from contacts'**
+  String get addfromcontacts;
+
+  /// No description provided for @addmanually.
+  ///
+  /// In en, this message translates to:
+  /// **'Add manually'**
+  String get addmanually;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @add.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
+  /// No description provided for @phonenumberlabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get phonenumberlabel;
+
+  /// No description provided for @phonenumberhint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a phone number'**
+  String get phonenumberhint;
+
+  /// No description provided for @noteslabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get noteslabel;
+
+  /// No description provided for @noteshint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add notes'**
+  String get noteshint;
+
+  /// No description provided for @datelabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get datelabel;
+
+  /// No description provided for @datehint.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a date'**
+  String get datehint;
+
+  /// No description provided for @requiredfield.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required'**
+  String get requiredfield;
+
+  /// No description provided for @appprefs.
+  ///
+  /// In en, this message translates to:
+  /// **'App Preferences'**
+  String get appprefs;
+
+  /// No description provided for @apptheme.
+  ///
+  /// In en, this message translates to:
+  /// **'App Theme'**
+  String get apptheme;
+
+  /// No description provided for @applocale.
+  ///
+  /// In en, this message translates to:
+  /// **'App language'**
+  String get applocale;
+
+  /// No description provided for @appthemesystem.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get appthemesystem;
+
+  /// No description provided for @appthemedark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get appthemedark;
+
+  /// No description provided for @appthemelight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get appthemelight;
 }
 
 class _AppLocalizationsDelegate

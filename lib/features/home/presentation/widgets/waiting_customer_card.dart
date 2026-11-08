@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/helpers/spacer.dart';
-import 'custom_button.dart';
+import '../../../../core/widgets/custom_button.dart';
 
 class WaitingCustomerCard extends StatelessWidget {
   final int index;
@@ -42,7 +42,8 @@ class WaitingCustomerCard extends StatelessWidget {
                     child: Text(
                       '#$index',
                       style: TextStyle(
-                        color: context.themeData.cardColor,
+                        color: context.themeData.colorScheme.onSurface
+                            .withAlpha(155),
                         fontSize: 24.sp,
                         fontWeight: .bold,
                       ),

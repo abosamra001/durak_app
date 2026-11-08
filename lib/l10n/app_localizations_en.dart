@@ -21,10 +21,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get remaining => 'Remaining';
 
   @override
-  String get addnew => 'Add New';
+  String get addnewcustomer => 'Add New Customer';
 
   @override
-  String get appdiscription => 'Make it easy to manage your customers';
+  String get appdiscription => 'Manage your Customers easly';
 
   @override
   String get done => 'Done';
@@ -40,4 +40,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get calender => 'Calender';
+
+  @override
+  String get namelabel => 'Name';
+
+  @override
+  String get namehint => 'Enter a name';
+
+  @override
+  String get addfromcontacts => 'Add from contacts';
+
+  @override
+  String get addmanually => 'Add manually';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get add => 'Add';
+
+  @override
+  String get phonenumberlabel => 'Phone Number';
+
+  @override
+  String get phonenumberhint => 'Add a phone number';
+
+  @override
+  String get noteslabel => 'Notes';
+
+  @override
+  String get noteshint => 'Add notes';
+
+  @override
+  String get datelabel => 'Date';
+
+  @override
+  String get datehint => 'Pick a date';
+
+  @override
+  String get requiredfield => 'This field is required';
+
+  @override
+  String get appprefs => 'App Preferences';
+
+  @override
+  String get apptheme => 'App Theme';
+
+  @override
+  String get applocale => 'App language';
+
+  @override
+  String get appthemesystem => 'System';
+
+  @override
+  String get appthemedark => 'Dark';
+
+  @override
+  String get appthemelight => 'Light';
 }

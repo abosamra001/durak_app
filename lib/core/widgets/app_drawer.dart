@@ -1,5 +1,7 @@
 import 'package:durak_app/core/helpers/extensions.dart';
 import 'package:durak_app/core/helpers/spacer.dart';
+import 'package:durak_app/core/router/app_router.dart';
+import 'package:durak_app/core/router/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -54,9 +56,10 @@ class AppDrawer extends ConsumerWidget {
               Icons.home,
               color: context.themeData.colorScheme.primary,
             ),
-            title: const Text('الرئيسية'),
+            title: Text(context.locale.home),
             onTap: () {
               context.pop();
+              appRouter.go(Routes.homepage);
             },
           ),
           ListTile(
@@ -64,9 +67,10 @@ class AppDrawer extends ConsumerWidget {
               Icons.calendar_month,
               color: context.themeData.colorScheme.primary,
             ),
-            title: const Text('الجدول'),
+            title: Text(context.locale.calender),
             onTap: () {
               context.pop();
+              appRouter.push(Routes.calenderpage);
             },
           ),
           ListTile(
@@ -74,9 +78,10 @@ class AppDrawer extends ConsumerWidget {
               Icons.settings,
               color: context.themeData.colorScheme.primary,
             ),
-            title: const Text('الإعدادات'),
+            title: Text(context.locale.settings),
             onTap: () {
               context.pop();
+              appRouter.push(Routes.settingspage);
             },
           ),
         ],

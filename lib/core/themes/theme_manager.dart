@@ -8,9 +8,9 @@ class ThemeManager {
     useMaterial3: true,
     brightness: .dark,
     scaffoldBackgroundColor: AppColors.darkBackground,
-    primaryColor: AppColors.primaryAmber,
+    primaryColor: AppColors.darkPrimaryAmber,
     colorScheme: const ColorScheme.dark(
-      primary: Color.fromRGBO(243, 156, 18, 1),
+      primary: AppColors.darkPrimaryAmber,
       surface: AppColors.darkSurface,
       onSurface: AppColors.darkTextPrimary,
     ),
@@ -22,13 +22,15 @@ class ThemeManager {
         fontSize: 18.sp,
         fontWeight: .bold,
       ),
-      actionsIconTheme: IconThemeData(color: AppColors.primaryAmber),
+      iconTheme: IconThemeData(color: AppColors.darkPrimaryAmber),
+      actionsIconTheme: IconThemeData(color: AppColors.darkPrimaryAmber),
     ),
     cardColor: AppColors.darkCardColor,
     fontFamily: GoogleFonts.cairo().fontFamily,
     textTheme: const TextTheme(
       bodyLarge: TextStyle(color: AppColors.darkTextPrimary),
       bodyMedium: TextStyle(color: AppColors.darkTextSecondary),
+      bodySmall: TextStyle(color: AppColors.darkTextSecondary),
     ),
   );
 
@@ -51,12 +53,15 @@ class ThemeManager {
         fontSize: 18.sp,
         fontWeight: FontWeight.bold,
       ),
+      iconTheme: IconThemeData(color: AppColors.lightPrimaryAmber),
+      actionsIconTheme: IconThemeData(color: AppColors.lightPrimaryAmber),
     ),
-    cardColor: AppColors.lightSurface,
+    cardColor: AppColors.lightSurfaceSubtle,
     fontFamily: GoogleFonts.cairo().fontFamily,
     textTheme: const TextTheme(
       bodyLarge: TextStyle(color: AppColors.lightTextPrimary),
       bodyMedium: TextStyle(color: AppColors.lightTextSecondary),
+      bodySmall: TextStyle(color: AppColors.lightTextSecondary),
     ),
   );
 }

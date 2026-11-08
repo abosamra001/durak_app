@@ -1,7 +1,8 @@
 import 'package:durak_app/core/helpers/extensions.dart';
 import 'package:durak_app/core/helpers/spacer.dart';
 import 'package:durak_app/core/themes/app_colors.dart';
-import 'package:durak_app/features/home/presentation/widgets/app_drawer.dart';
+import 'package:durak_app/features/home/presentation/widgets/add_new_cutomer_dialog.dart';
+import 'package:durak_app/core/widgets/app_drawer.dart';
 import 'package:durak_app/features/home/presentation/widgets/waiting_customer_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +29,7 @@ class HomePage extends StatelessWidget {
             horizontalSpace(8),
             Text(
               context.locale.appdiscription,
-              style: context.themeData.textTheme.bodyMedium,
+              style: context.themeData.textTheme.bodySmall,
             ),
           ],
         ),
@@ -37,6 +38,7 @@ class HomePage extends StatelessWidget {
         ],
         actionsPadding: EdgeInsets.all(8.r),
       ),
+      drawer: const AppDrawer(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.h),
         child: CustomScrollView(
@@ -65,7 +67,20 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      drawer: const AppDrawer(),
+      floatingActionButton: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+        child: FloatingActionButton(
+          onPressed: () {
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) => AddNewCutomerDialog(),
+            );
+          },
+          child: Icon(Icons.add),
+        ),
+      ),
+      floatingActionButtonLocation: .endFloat,
     );
   }
 }
