@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/helpers/spacer.dart';
-import '../../../../core/providers/theme_provider.dart';
+import '../../providers/theme_provider.dart';
 
 class AppPreferenceTheme extends ConsumerWidget {
   const AppPreferenceTheme({super.key});

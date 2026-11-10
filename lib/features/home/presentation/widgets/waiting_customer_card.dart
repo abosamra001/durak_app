@@ -1,3 +1,4 @@
+import 'package:durak_app/core/database/app_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,8 +7,13 @@ import '../../../../core/helpers/spacer.dart';
 import '../../../../core/widgets/custom_button.dart';
 
 class WaitingCustomerCard extends StatelessWidget {
-  final int index;
-  const WaitingCustomerCard({super.key, required this.index});
+  final Appointment appointment;
+  final int queueIndex;
+  const WaitingCustomerCard({
+    super.key,
+    required this.appointment,
+    required this.queueIndex,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,19 +34,19 @@ class WaitingCustomerCard extends StatelessWidget {
                     crossAxisAlignment: .start,
                     children: [
                       Text(
-                        "أحمد محمد",
+                        appointment.name,
                         style: context.themeData.textTheme.bodyLarge!.copyWith(
                           fontSize: 24.sp,
                         ),
                       ),
-                      Text("01123456789"),
+                      Text(appointment.phoneNumber),
                     ],
                   ),
                   // Current number
                   Container(
                     padding: EdgeInsets.all(12.r),
                     child: Text(
-                      '#$index',
+                      '#$queueIndex',
                       style: TextStyle(
                         color: context.themeData.colorScheme.onSurface
                             .withAlpha(155),

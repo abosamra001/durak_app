@@ -1,3 +1,4 @@
+import 'package:durak_app/core/database/app_database.dart';
 import 'package:durak_app/core/helpers/extensions.dart';
 import 'package:durak_app/core/helpers/spacer.dart';
 import 'package:durak_app/core/widgets/custom_button.dart';
@@ -5,7 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CurrentCustomerCard extends StatelessWidget {
-  const CurrentCustomerCard({super.key});
+  final Appointment appointment;
+  final int queueCount;
+  final VoidCallback onDonePressed;
+
+  const CurrentCustomerCard({
+    super.key,
+    required this.appointment,
+    required this.onDonePressed,
+    required this.queueCount,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +48,7 @@ class CurrentCustomerCard extends StatelessWidget {
               children: [
                 Text(context.locale.remaining),
                 Text(
-                  '08',
+                  queueCount.toString(),
                   style: TextStyle(
                     color: context.themeData.colorScheme.primary,
                     fontSize: 24,
@@ -77,12 +87,12 @@ class CurrentCustomerCard extends StatelessWidget {
                     crossAxisAlignment: .start,
                     children: [
                       Text(
-                        "أحمد محمد",
+                        appointment.name,
                         style: context.themeData.textTheme.bodyLarge!.copyWith(
                           fontSize: 24.sp,
                         ),
                       ),
-                      Text("01123456789"),
+                      Text(appointment.phoneNumber),
                     ],
                   ),
                   // Current number
@@ -103,7 +113,7 @@ class CurrentCustomerCard extends StatelessWidget {
               ),
               verticalSpace(32),
               CustomButton(
-                onPressed: () {},
+                onPressed: onDonePressed,
                 backgroundColor: context.themeData.colorScheme.primary,
                 child: Row(
                   mainAxisAlignment: .center,

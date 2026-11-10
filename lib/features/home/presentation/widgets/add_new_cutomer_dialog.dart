@@ -1,23 +1,28 @@
+import 'package:durak_app/core/helpers/business_date.dart';
 import 'package:durak_app/core/helpers/extensions.dart';
 import 'package:durak_app/core/helpers/spacer.dart';
 import 'package:durak_app/core/widgets/custom_button.dart';
 import 'package:durak_app/core/widgets/custom_text_field.dart';
+import 'package:durak_app/core/providers/queue_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AddNewCutomerDialog extends StatefulWidget {
+class AddNewCutomerDialog extends ConsumerStatefulWidget {
   const AddNewCutomerDialog({super.key});
 
   @override
-  State<AddNewCutomerDialog> createState() => _AddNewCutomerDialogState();
+  ConsumerState<AddNewCutomerDialog> createState() =>
+      _AddNewCutomerDialogState();
 }
 
-class _AddNewCutomerDialogState extends State<AddNewCutomerDialog> {
+class _AddNewCutomerDialogState extends ConsumerState<AddNewCutomerDialog> {
   final nameController = TextEditingController();
   final phoneNumberController = TextEditingController();
   final notesController = TextEditingController();
   final dateController = TextEditingController();
+  DateTime? _pickedDate;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -44,8 +49,31 @@ class _AddNewCutomerDialogState extends State<AddNewCutomerDialog> {
 
   String _cleanPhoneNumber(String raw) => raw.replaceAll(RegExp(r'[^\d+]'), '');
 
+  void _submit() {
+    if (!formKey.currentState!.validate()) return;
+
+    final notes = notesController.text.trim();
+    ref
+        .read(queueControllerProvider.notifier)
+        .addNew(
+          name: nameController.text.trim(),
+          phoneNumber: phoneNumberController.text.trim(),
+          visitDate: dateKey(_pickedDate!),
+          notes: notes.isEmpty ? null : notes,
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
+    ref.listen(queueControllerProvider, (prev, next) {
+      if (next is AsyncError) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(context.locale.somethingWentWrong)),
+        );
+      } else if (prev?.isLoading == true && next is AsyncData) {
+        context.pop();
+      }
+    });
     return AlertDialog(
       title: Text(context.locale.addnewcustomer, textAlign: .center),
       titlePadding: EdgeInsets.symmetric(vertical: 12.h),
@@ -66,13 +94,10 @@ class _AddNewCutomerDialogState extends State<AddNewCutomerDialog> {
               ),
               thickness: 0.8,
             ),
-            // Text(
-            //   context.locale.addmanually,
-            //   style: TextStyle(fontWeight: .w300, fontSize: 10.sp),
-            // ),
             verticalSpace(8),
             Form(
               key: formKey,
+              autovalidateMode: .onUserInteraction,
               child: Column(
                 children: [
                   // --------------------------- Name ----------------------------
@@ -80,7 +105,6 @@ class _AddNewCutomerDialogState extends State<AddNewCutomerDialog> {
                     controller: nameController,
                     validator: (value) =>
                         requiredFieldValidator(context, value),
-                    onChanged: (_) => setState(() {}),
                     label: context.locale.namelabel,
                     hint: context.locale.namehint,
                   ),
@@ -91,7 +115,6 @@ class _AddNewCutomerDialogState extends State<AddNewCutomerDialog> {
                     textDirection: .ltr,
                     validator: (value) =>
                         requiredFieldValidator(context, value),
-                    onChanged: (_) => setState(() {}),
                     label: context.locale.phonenumberlabel,
                     hint: context.locale.phonenumberhint,
                     keyboardType: .phone,
@@ -102,16 +125,17 @@ class _AddNewCutomerDialogState extends State<AddNewCutomerDialog> {
                     children: [
                       CustomButton(
                         onPressed: () async {
-                          final pickedDate = await showDatePicker(
+                          _pickedDate = await showDatePicker(
                             context: context,
-                            firstDate: DateTime.now(),
+                            initialDate: currentBusinessDate(DateTime.now()),
+                            firstDate: currentBusinessDate(DateTime.now()),
                             lastDate: DateTime.now().add(Duration(days: 30)),
                           );
 
-                          if (pickedDate != null) {
+                          if (_pickedDate != null) {
                             setState(() {
                               dateController.text = context.dateFormater(
-                                pickedDate,
+                                _pickedDate!,
                               );
                             });
                           }
@@ -147,10 +171,7 @@ class _AddNewCutomerDialogState extends State<AddNewCutomerDialog> {
       ),
       actions: [
         CustomButton(
-          onPressed:
-              formKey.currentState != null && formKey.currentState!.validate()
-              ? () {}
-              : null, // if text fields is validated then enable it
+          onPressed: _submit,
           backgroundColor: context.themeData.colorScheme.primary,
           child: Text(context.locale.add),
         ),

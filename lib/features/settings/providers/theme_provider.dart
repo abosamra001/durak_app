@@ -1,7 +1,8 @@
 import 'package:durak_app/core/helpers/constants.dart';
-import 'package:durak_app/core/helpers/shared_preferences_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../../core/providers/shared_preferences_provider.dart';
 
 part 'theme_provider.g.dart';
 
@@ -12,7 +13,9 @@ class AppTheme extends _$AppTheme {
 
   void setTheme(ThemeMode mode) {
     state = mode;
-    SharedPreferencesHelper.setString(ConstantsKeys.themeKey, mode.name);
+    ref
+        .watch(sharedPreferencesProvider)
+        .setString(ConstantsKeys.themeKey, mode.name);
   }
 
   void toggleTheme() {
@@ -22,9 +25,9 @@ class AppTheme extends _$AppTheme {
   }
 
   ThemeMode getThemeMode() {
-    final currentMode = SharedPreferencesHelper.getStrig(
-      ConstantsKeys.themeKey,
-    );
+    final currentMode = ref
+        .watch(sharedPreferencesProvider)
+        .getString(ConstantsKeys.themeKey);
 
     if (currentMode == ThemeMode.light.name) {
       return ThemeMode.light;

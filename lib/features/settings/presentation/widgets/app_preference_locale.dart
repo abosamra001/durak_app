@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/helpers/spacer.dart';
-import '../../../../core/providers/locale_provider.dart';
+import '../../providers/locale_provider.dart';
 
 class AppPreferenceLocale extends ConsumerWidget {
   const AppPreferenceLocale({super.key});
@@ -14,10 +14,10 @@ class AppPreferenceLocale extends ConsumerWidget {
     String dropDownValue = localeToString(context, locale);
     return Row(
       children: [
-        Icon(Icons.dark_mode_outlined),
+        Icon(Icons.language),
         horizontalSpace(12),
         Text(
-          context.locale.apptheme,
+          context.locale.applocale,
           style: context.themeData.textTheme.bodyLarge,
         ),
         Spacer(),

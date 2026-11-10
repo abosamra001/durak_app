@@ -97,4 +97,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get appthemelight => 'فاتح';
+
+  @override
+  String get somethingWentWrong => 'حدث خطأ ما';
+
+  @override
+  String get noappointmentsyet => 'لا يوجد حجوزات اليوم';
 }

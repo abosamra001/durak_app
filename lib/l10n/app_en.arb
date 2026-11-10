@@ -29,5 +29,7 @@
   "applocale": "App language",
   "appthemesystem": "System",
   "appthemedark": "Dark",
-  "appthemelight": "Light"
+  "appthemelight": "Light",
+  "somethingWentWrong": "Something went wrong",
+  "noappointmentsyet": "No appointments available today."
 }

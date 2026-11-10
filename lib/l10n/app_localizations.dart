@@ -277,6 +277,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Light'**
   String get appthemelight;
+
+  /// No description provided for @somethingWentWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get somethingWentWrong;
+
+  /// No description provided for @noappointmentsyet.
+  ///
+  /// In en, this message translates to:
+  /// **'No appointments available today.'**
+  String get noappointmentsyet;
 }
 
 class _AppLocalizationsDelegate

@@ -1,18 +1,16 @@
-import 'package:durak_app/core/helpers/extensions.dart';
-import 'package:durak_app/core/helpers/spacer.dart';
-import 'package:durak_app/core/router/app_router.dart';
-import 'package:durak_app/core/router/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// استيراد الـ Providers الخاصة بك للثيم أو اللغة إذا رغبت
-// import '.../theme_provider.dart';
+import '../../app/router/app_router.dart';
+import '../../app/router/routes.dart';
+import '../helpers/extensions.dart';
+import '../helpers/spacer.dart';
 
-class AppDrawer extends ConsumerWidget {
-  const AppDrawer({super.key});
+class AppDrawer extends StatelessWidget {
+  final String name;
+  const AppDrawer({super.key, required this.name});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: context.themeData.colorScheme.surface,
       child: ListView(
@@ -33,18 +31,10 @@ class AppDrawer extends ConsumerWidget {
                 ),
                 verticalSpace(10),
                 Text(
-                  'أبو سمرة',
+                  name,
                   style: context.themeData.textTheme.titleMedium?.copyWith(
                     color: context.themeData.colorScheme.onPrimary,
                     fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  'mohamed@example.com',
-                  style: context.themeData.textTheme.bodySmall?.copyWith(
-                    color: context.themeData.colorScheme.onPrimary.withOpacity(
-                      0.8,
-                    ),
                   ),
                 ),
               ],

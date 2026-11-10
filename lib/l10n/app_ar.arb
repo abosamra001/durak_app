@@ -29,5 +29,7 @@
   "applocale": "لغة التطبيق",
   "appthemesystem": "النظام",
   "appthemedark": "داكن",
-  "appthemelight": "فاتح"
+  "appthemelight": "فاتح",
+  "somethingWentWrong": "حدث خطأ ما",
+  "noappointmentsyet": "لا يوجد حجوزات اليوم"
 }

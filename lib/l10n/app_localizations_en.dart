@@ -97,4 +97,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get appthemelight => 'Light';
+
+  @override
+  String get somethingWentWrong => 'Something went wrong';
+
+  @override
+  String get noappointmentsyet => 'No appointments available today.';
 }

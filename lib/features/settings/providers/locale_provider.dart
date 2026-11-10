@@ -1,7 +1,8 @@
-import 'package:durak_app/core/helpers/constants.dart';
-import 'package:durak_app/core/helpers/shared_preferences_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../../core/providers/shared_preferences_provider.dart';
+import '../../../core/helpers/constants.dart';
 
 part 'locale_provider.g.dart';
 
@@ -12,10 +13,9 @@ class AppLocale extends _$AppLocale {
 
   void setLocale(Locale locale) {
     state = locale;
-    SharedPreferencesHelper.setString(
-      ConstantsKeys.localeKey,
-      locale.languageCode,
-    );
+    ref
+        .watch(sharedPreferencesProvider)
+        .setString(ConstantsKeys.localeKey, locale.languageCode);
   }
 
   void toggleLocale() {
@@ -27,7 +27,9 @@ class AppLocale extends _$AppLocale {
   }
 
   Locale getCurrentLocale() {
-    final locale = SharedPreferencesHelper.getStrig(ConstantsKeys.localeKey);
+    final locale = ref
+        .watch(sharedPreferencesProvider)
+        .getString(ConstantsKeys.localeKey);
     if (locale == 'en') {
       return Locale('en');
     } else {

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'theme_provider.dart';
+part of 'locale_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -9,50 +9,50 @@ part of 'theme_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(AppTheme)
-final appThemeProvider = AppThemeProvider._();
+@ProviderFor(AppLocale)
+final appLocaleProvider = AppLocaleProvider._();
 
-final class AppThemeProvider extends $NotifierProvider<AppTheme, ThemeMode> {
-  AppThemeProvider._()
+final class AppLocaleProvider extends $NotifierProvider<AppLocale, Locale> {
+  AppLocaleProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'appThemeProvider',
+        name: r'appLocaleProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$appThemeHash();
+  String debugGetCreateSourceHash() => _$appLocaleHash();
 
   @$internal
   @override
-  AppTheme create() => AppTheme();
+  AppLocale create() => AppLocale();
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(ThemeMode value) {
+  Override overrideWithValue(Locale value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<ThemeMode>(value),
+      providerOverride: $SyncValueProvider<Locale>(value),
     );
   }
 }
 
-String _$appThemeHash() => r'c18b7d0606949b7d48062388b829639841bec502';
+String _$appLocaleHash() => r'84909ee145da7ba3a32e2d065672c221a66ab828';
 
-abstract class _$AppTheme extends $Notifier<ThemeMode> {
-  ThemeMode build();
+abstract class _$AppLocale extends $Notifier<Locale> {
+  Locale build();
   @$mustCallSuper
   @override
   WhenComplete runBuild() {
-    final ref = this.ref as $Ref<ThemeMode, ThemeMode>;
+    final ref = this.ref as $Ref<Locale, Locale>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<ThemeMode, ThemeMode>,
-              ThemeMode,
+              AnyNotifier<Locale, Locale>,
+              Locale,
               Object?,
               Object?
             >;
