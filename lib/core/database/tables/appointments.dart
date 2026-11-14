@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart';
 
-enum AppointmentStatus { waiting, done, cancelled }
+import '../../constants/enums.dart';
 
 class Appointments extends Table {
   IntColumn get id => integer().autoIncrement()();

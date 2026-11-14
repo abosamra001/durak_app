@@ -1,7 +1,7 @@
-import 'package:durak_app/core/helpers/extensions.dart';
-import 'package:durak_app/core/helpers/spacer.dart';
-import 'package:durak_app/features/settings/presentation/widgets/app_preference_locale.dart';
-import 'package:durak_app/features/settings/presentation/widgets/app_preference_theme.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/helpers/spacer.dart';
+import 'app_preference_locale.dart';
+import 'app_preference_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -158,11 +158,11 @@ abstract class AppLocalizations {
   /// **'Settings'**
   String get settings;
 
-  /// No description provided for @calender.
+  /// No description provided for @calendar.
   ///
   /// In en, this message translates to:
-  /// **'Calender'**
-  String get calender;
+  /// **'Calendar'**
+  String get calendar;
 
   /// No description provided for @namelabel.
   ///
@@ -289,6 +289,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No appointments available today.'**
   String get noappointmentsyet;
+
+  /// No description provided for @filterall.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get filterall;
+
+  /// No description provided for @filterwaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting'**
+  String get filterwaiting;
+
+  /// No description provided for @filterdone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get filterdone;
+
+  /// No description provided for @filtercanceled.
+  ///
+  /// In en, this message translates to:
+  /// **'Canceled'**
+  String get filtercanceled;
+
+  /// No description provided for @moveup.
+  ///
+  /// In en, this message translates to:
+  /// **'Move Up'**
+  String get moveup;
+
+  /// No description provided for @movedown.
+  ///
+  /// In en, this message translates to:
+  /// **'Move Down'**
+  String get movedown;
+
+  /// No description provided for @markasdone.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as done'**
+  String get markasdone;
+
+  /// No description provided for @markascanceled.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as canceled'**
+  String get markascanceled;
+
+  /// No description provided for @markaswaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as waiting'**
+  String get markaswaiting;
 }
 
 class _AppLocalizationsDelegate

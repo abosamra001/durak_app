@@ -10,7 +10,7 @@
   "waitingqueue": "Waiting queue",
   "home": "Home",
   "settings": "Settings",
-  "calender": "Calender",
+  "calendar": "Calendar",
   "namelabel": "Name",
   "namehint": "Enter a name",
   "addfromcontacts": "Add from contacts",
@@ -31,5 +31,14 @@
   "appthemedark": "Dark",
   "appthemelight": "Light",
   "somethingWentWrong": "Something went wrong",
-  "noappointmentsyet": "No appointments available today."
+  "noappointmentsyet": "No appointments available today.",
+  "filterall": "All",
+  "filterwaiting": "Waiting",
+  "filterdone": "Done",
+  "filtercanceled": "Canceled",
+  "moveup": "Move Up",
+  "movedown": "Move Down",
+  "markasdone": "Mark as done",
+  "markascanceled": "Mark as canceled",
+  "markaswaiting": "Mark as waiting"
 }

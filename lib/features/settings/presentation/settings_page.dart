@@ -1,4 +1,4 @@
-import 'package:durak_app/core/helpers/extensions.dart';
+import '../../../core/helpers/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

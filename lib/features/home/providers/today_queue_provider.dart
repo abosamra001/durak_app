@@ -6,5 +6,11 @@ import '../../../core/providers/queue_repository_provider.dart';
 
 final todayQueueProvider = StreamProvider<List<Appointment>>((ref) {
   final dueDate = dateKey(currentBusinessDate(DateTime.now()));
-  return ref.watch(queueRepositoryProvider).watchQueue(dueDate);
+  return ref.watch(queueRepositoryProvider).watchDay(dueDate);
 });
+
+final todayWaitingListProvider = Provider<AsyncValue<List<Appointment>>>(
+  (ref) => ref
+      .watch(todayQueueProvider)
+      .whenData((list) => list.where((a) => a.status == .waiting).toList()),
+);

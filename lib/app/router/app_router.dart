@@ -1,16 +1,16 @@
-import 'package:durak_app/app/router/routes.dart';
-import 'package:durak_app/features/calender/presentation/calender_page.dart';
-import 'package:durak_app/features/home/presentation/home_page.dart';
-import 'package:durak_app/features/settings/presentation/settings_page.dart';
+import 'routes.dart';
+import '../../features/calendar/presentation/calendar_page.dart';
+import '../../features/home/presentation/home_page.dart';
+import '../../features/settings/presentation/settings_page.dart';
 import 'package:go_router/go_router.dart';
 
 final appRouter = GoRouter(
-  initialLocation: Routes.homepage, // TODO - REPLACE THIS
+  initialLocation: Routes.homepage,
   routes: [
     GoRoute(path: Routes.homepage, builder: (context, state) => HomePage()),
     GoRoute(
-      path: Routes.calenderpage,
-      builder: (context, state) => CalenderPage(),
+      path: Routes.calendarpage,
+      builder: (context, state) => CalendarPage(),
     ),
     GoRoute(
       path: Routes.settingspage,

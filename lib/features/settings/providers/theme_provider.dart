@@ -1,4 +1,4 @@
-import 'package:durak_app/core/helpers/constants.dart';
+import '../../../core/constants/constants_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

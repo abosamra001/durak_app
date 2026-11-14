@@ -39,7 +39,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settings => 'Settings';
 
   @override
-  String get calender => 'Calender';
+  String get calendar => 'Calendar';
 
   @override
   String get namelabel => 'Name';
@@ -103,4 +103,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noappointmentsyet => 'No appointments available today.';
+
+  @override
+  String get filterall => 'All';
+
+  @override
+  String get filterwaiting => 'Waiting';
+
+  @override
+  String get filterdone => 'Done';
+
+  @override
+  String get filtercanceled => 'Canceled';
+
+  @override
+  String get moveup => 'Move Up';
+
+  @override
+  String get movedown => 'Move Down';
+
+  @override
+  String get markasdone => 'Mark as done';
+
+  @override
+  String get markascanceled => 'Mark as canceled';
+
+  @override
+  String get markaswaiting => 'Mark as waiting';
 }

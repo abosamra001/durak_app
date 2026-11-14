@@ -1,13 +1,14 @@
-import 'package:durak_app/core/helpers/business_date.dart';
-import 'package:durak_app/core/helpers/extensions.dart';
-import 'package:durak_app/core/helpers/spacer.dart';
-import 'package:durak_app/core/widgets/custom_button.dart';
-import 'package:durak_app/core/widgets/custom_text_field.dart';
-import 'package:durak_app/core/providers/queue_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/helpers/business_date.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/helpers/spacer.dart';
+import '../../../../core/widgets/custom_button.dart';
+import '../../../../core/widgets/custom_text_field.dart';
+import '../../../../core/providers/queue_controller.dart';
 
 class AddNewCutomerDialog extends ConsumerStatefulWidget {
   const AddNewCutomerDialog({super.key});
@@ -97,7 +98,7 @@ class _AddNewCutomerDialogState extends ConsumerState<AddNewCutomerDialog> {
             verticalSpace(8),
             Form(
               key: formKey,
-              autovalidateMode: .onUserInteraction,
+              // autovalidateMode: .onUserInteraction,
               child: Column(
                 children: [
                   // --------------------------- Name ----------------------------

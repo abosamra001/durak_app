@@ -40,4 +40,8 @@ class AppColors {
   static const Color lightTextSecondary = Color(
     0xFF6C757D,
   ); // نصوص فرعية رمادية داكنة
+
+  // general colors
+  static const Color successColor = Color.fromARGB(255, 0, 163, 35);
+  static const Color errorColor = Color.fromARGB(255, 137, 7, 0);
 }

@@ -48,7 +48,7 @@ class AppDrawer extends StatelessWidget {
             ),
             title: Text(context.locale.home),
             onTap: () {
-              context.pop();
+              Scaffold.of(context).closeDrawer();
               appRouter.go(Routes.homepage);
             },
           ),
@@ -57,10 +57,11 @@ class AppDrawer extends StatelessWidget {
               Icons.calendar_month,
               color: context.themeData.colorScheme.primary,
             ),
-            title: Text(context.locale.calender),
-            onTap: () {
-              context.pop();
-              appRouter.push(Routes.calenderpage);
+            title: Text(context.locale.calendar),
+            onTap: () async {
+              Scaffold.of(context).closeDrawer();
+              await Future<void>.delayed(const Duration(milliseconds: 300));
+              appRouter.push(Routes.calendarpage);
             },
           ),
           ListTile(
@@ -70,7 +71,7 @@ class AppDrawer extends StatelessWidget {
             ),
             title: Text(context.locale.settings),
             onTap: () {
-              context.pop();
+              Scaffold.of(context).closeDrawer();
               appRouter.push(Routes.settingspage);
             },
           ),

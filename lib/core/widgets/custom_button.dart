@@ -9,6 +9,9 @@ class CustomButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final Color? backgroundColor;
   final double? borderRadius;
+  final BorderSide? borderSide;
+  final double? height;
+  final double? width;
   const CustomButton({
     super.key,
     required this.onPressed,
@@ -16,6 +19,9 @@ class CustomButton extends StatelessWidget {
     this.padding,
     this.backgroundColor,
     this.borderRadius,
+    this.borderSide,
+    this.height,
+    this.width,
   });
 
   @override
@@ -26,13 +32,15 @@ class CustomButton extends StatelessWidget {
       padding:
           padding ?? EdgeInsets.symmetric(horizontal: 34.w, vertical: 16.h),
       shape: OutlineInputBorder(
-        borderSide: BorderSide.none,
+        borderSide: borderSide ?? BorderSide.none,
         borderRadius: BorderRadius.circular(borderRadius ?? 24.r),
       ),
       elevation: 0,
       focusElevation: 0,
       highlightElevation: 0,
       hoverElevation: 0,
+      height: height,
+      minWidth: width,
       child: child,
     );
   }

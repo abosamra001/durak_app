@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/providers/shared_preferences_provider.dart';
-import '../../../core/helpers/constants.dart';
+import '../../../core/constants/constants_keys.dart';
 
 part 'locale_provider.g.dart';
 

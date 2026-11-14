@@ -1,16 +1,14 @@
 import 'package:drift/drift.dart';
-import 'package:durak_app/core/database/app_database.dart';
-import 'package:durak_app/core/database/tables/appointments.dart';
+import '../constants/enums.dart';
+import '../database/app_database.dart';
 
 class QueueRepository {
   final AppDatabase _db;
   const QueueRepository(this._db);
 
-  Stream<List<Appointment>> watchQueue(String dueDate) {
+  Stream<List<Appointment>> watchDay(String visitDate) {
     return (_db.select(_db.appointments)
-          ..where(
-            (a) => a.visitDate.equals(dueDate) & a.status.equalsValue(.waiting),
-          )
+          ..where((a) => a.visitDate.equals(visitDate))
           ..orderBy([
             (a) => OrderingTerm.asc(a.position),
             (a) => OrderingTerm.asc(a.id),
@@ -46,10 +44,53 @@ class QueueRepository {
               phoneNumber: phoneNumber,
               visitDate: visitDate,
               position: last == null ? 1 : last.position + 1,
-              status: .waiting,
+              status: AppointmentStatus.waiting,
               notes: Value(notes),
             ),
           ));
     });
+  }
+
+  Future<void> move(int id, {required bool up}) async {
+    return (_db.transaction(() async {
+      final current = await (_db.select(
+        _db.appointments,
+      )..where((a) => a.id.equals(id))).getSingleOrNull();
+
+      if (current == null) return;
+      print(
+        '================================= current ${current.name},${current.id},${current.position},',
+      );
+      final neighbor =
+          await (_db.select(_db.appointments)
+                ..where(
+                  (a) =>
+                      a.visitDate.equals(current.visitDate) &
+                      a.status.equalsValue(.waiting) &
+                      (up
+                          ? a.position.isSmallerThanValue(current.position)
+                          : a.position.isBiggerThanValue(current.position)),
+                )
+                ..orderBy([
+                  (a) => OrderingTerm(
+                    expression: a.position,
+                    mode: up ? .desc : .asc,
+                  ),
+                ])
+                ..limit(1))
+              .getSingleOrNull();
+
+      if (neighbor == null) return;
+      print(
+        '================================= neighbor ${neighbor.name},${neighbor.id},${neighbor.position},',
+      );
+
+      await (_db.update(_db.appointments)
+            ..where((a) => a.id.equals(current.id)))
+          .write(AppointmentsCompanion(position: Value(neighbor.position)));
+      await (_db.update(_db.appointments)
+            ..where((a) => a.id.equals(neighbor.id)))
+          .write(AppointmentsCompanion(position: Value(current.position)));
+    }));
   }
 }
