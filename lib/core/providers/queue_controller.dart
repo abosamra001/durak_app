@@ -1,5 +1,7 @@
-import 'package:durak_app/core/providers/queue_repository_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../constants/enums.dart';
+import 'queue_repository_provider.dart';
 
 class QueueController extends AsyncNotifier<void> {
   @override
@@ -24,17 +26,21 @@ class QueueController extends AsyncNotifier<void> {
     );
   }
 
-  Future<void> marakAsCompleted(int id) async {
+  Future<void> changeStatus(int id, AppointmentStatus status) async {
     state = AsyncLoading();
     state = await AsyncValue.guard(
-      () => ref.read(queueRepositoryProvider).setStatus(id, .done),
+      () => ref.read(queueRepositoryProvider).setStatus(id, status),
     );
   }
 
-  Future<void> markAsCanceled(int id) async {
+  Future<void> moveUp(int id) => _move(id, up: true);
+
+  Future<void> moveDown(int id) => _move(id, up: false);
+
+  Future<void> _move(int id, {required bool up}) async {
     state = AsyncLoading();
     state = await AsyncValue.guard(
-      () => ref.read(queueRepositoryProvider).setStatus(id, .cancelled),
+      () => ref.read(queueRepositoryProvider).move(id, up: up),
     );
   }
 }

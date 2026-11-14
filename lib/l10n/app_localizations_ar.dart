@@ -39,7 +39,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get settings => 'الاعدادات';
 
   @override
-  String get calender => 'التقويم';
+  String get calendar => 'التقويم';
 
   @override
   String get namelabel => 'الإسم';
@@ -103,4 +103,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noappointmentsyet => 'لا يوجد حجوزات اليوم';
+
+  @override
+  String get filterall => 'الكل';
+
+  @override
+  String get filterwaiting => 'في الانتظار';
+
+  @override
+  String get filterdone => 'انتهي';
+
+  @override
+  String get filtercanceled => 'ملغي';
+
+  @override
+  String get moveup => 'حرك لأعلي';
+
+  @override
+  String get movedown => 'حرك لأسفل';
+
+  @override
+  String get markasdone => 'علم بمنتهي';
+
+  @override
+  String get markascanceled => 'علم بملغي';
+
+  @override
+  String get markaswaiting => 'علم في الانتظار';
 }

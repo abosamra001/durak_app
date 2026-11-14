@@ -7,10 +7,10 @@ import 'app/durak_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final prefs = await SharedPreferences.getInstance();
+  final prefsInstance = await SharedPreferences.getInstance();
   runApp(
     ProviderScope(
-      overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
+      overrides: [sharedPreferencesProvider.overrideWithValue(prefsInstance)],
       child: const DurakApp(),
     ),
   );

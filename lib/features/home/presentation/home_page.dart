@@ -1,23 +1,24 @@
-import 'package:durak_app/core/helpers/extensions.dart';
-import 'package:durak_app/core/helpers/spacer.dart';
-import 'package:durak_app/core/themes/app_colors.dart';
-import 'package:durak_app/features/home/presentation/widgets/add_new_cutomer_dialog.dart';
-import 'package:durak_app/core/widgets/app_drawer.dart';
-import 'package:durak_app/features/home/presentation/widgets/waiting_customer_card.dart';
-import 'package:durak_app/features/home/providers/today_queue_provider.dart';
-import 'package:durak_app/core/providers/queue_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'widgets/current_customer_card.dart';
+import '../../../core/helpers/extensions.dart';
+import '../../../core/helpers/spacer.dart';
+import '../../../core/providers/queue_controller.dart';
+import '../../../core/themes/app_colors.dart';
+import '../../../core/widgets/custom_button.dart';
+import '../../../core/widgets/app_drawer.dart';
+import '../providers/today_queue_provider.dart';
+import 'widgets/add_new_cutomer_dialog.dart';
+import 'widgets/today_details.dart';
+import 'widgets/customer_card.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final appointmentsForToday = ref.watch(todayQueueProvider);
+    final appointmentsForToday = ref.watch(todayWaitingListProvider);
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -59,14 +60,59 @@ class HomePage extends ConsumerWidget {
                           crossAxisAlignment: .start,
                           children: [
                             verticalSpace(16),
-                            CurrentCustomerCard(
+                            TodayDetails(queueCount: appointments.length),
+                            verticalSpace(16),
+                            CustomerCard(
                               appointment: appointments.first,
-                              queueCount: appointments.length,
-                              onDonePressed: () {
-                                ref
-                                    .read(queueControllerProvider.notifier)
-                                    .marakAsCompleted(appointments.first.id);
-                              },
+                              queueIndex: 1,
+                              cardDecortion: BoxDecoration(
+                                border: Border(
+                                  right: BorderSide(
+                                    color: context.themeData.primaryColor,
+                                    width: 4,
+                                  ),
+                                ),
+                                color: context.themeData.cardColor,
+                              ),
+                              queueIndexDecoration: BoxDecoration(
+                                color:
+                                    context.themeData.scaffoldBackgroundColor,
+                              ),
+                              actions: [
+                                CustomButton(
+                                  onPressed: () {
+                                    ref
+                                        .read(queueControllerProvider.notifier)
+                                        .changeStatus(
+                                          appointments.first.id,
+                                          .done,
+                                        );
+                                  },
+                                  backgroundColor:
+                                      context.themeData.colorScheme.primary,
+                                  child: Row(
+                                    mainAxisAlignment: .center,
+                                    children: [
+                                      Icon(
+                                        Icons.done,
+                                        color: context
+                                            .themeData
+                                            .scaffoldBackgroundColor,
+                                      ),
+                                      horizontalSpace(8),
+                                      Text(
+                                        context.locale.done,
+                                        style: TextStyle(
+                                          color: context
+                                              .themeData
+                                              .scaffoldBackgroundColor,
+                                          fontWeight: .bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                             verticalSpace(32),
                             Text(
@@ -79,9 +125,20 @@ class HomePage extends ConsumerWidget {
                       ),
                       SliverList.builder(
                         itemCount: waitingList.length,
-                        itemBuilder: (context, index) => WaitingCustomerCard(
-                          appointment: waitingList[index],
-                          queueIndex: index + 2,
+                        itemBuilder: (context, i) => CustomerCard(
+                          appointment: waitingList[i],
+                          queueIndex: i + 2,
+                          actions: [
+                            CustomButton(
+                              onPressed: () {},
+                              child: Icon(Icons.call),
+                            ),
+                            // horizontalSpace(16),
+                            CustomButton(
+                              onPressed: () {},
+                              child: Icon(Icons.message),
+                            ),
+                          ],
                         ),
                       ),
                     ],

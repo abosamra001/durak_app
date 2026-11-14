@@ -10,7 +10,7 @@
   "waitingqueue": "قائمة الانتظار",
   "home": "الرئيسية",
   "settings": "الاعدادات",
-  "calender": "التقويم",
+  "calendar": "التقويم",
   "namelabel": "الإسم",
   "namehint": "ادخل الإسم",
   "addfromcontacts": "إضافة من جهات الاتصال",
@@ -31,5 +31,14 @@
   "appthemedark": "داكن",
   "appthemelight": "فاتح",
   "somethingWentWrong": "حدث خطأ ما",
-  "noappointmentsyet": "لا يوجد حجوزات اليوم"
+  "noappointmentsyet": "لا يوجد حجوزات اليوم",
+  "filterall": "الكل",
+  "filterwaiting": "في الانتظار",
+  "filterdone": "انتهي",
+  "filtercanceled": "ملغي",
+  "moveup": "حرك لأعلي",
+  "movedown": "حرك لأسفل",
+  "markasdone": "علم بمنتهي",
+  "markascanceled": "علم بملغي",
+  "markaswaiting": "علم في الانتظار"
 }
