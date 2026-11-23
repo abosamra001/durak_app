@@ -3,12 +3,14 @@ import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/helpers/business_date.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/helpers/spacer.dart';
+import '../../../../core/helpers/validators.dart';
+import '../../../../core/providers/business_date_provider.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_text_field.dart';
 import '../../../../core/providers/queue_controller.dart';
+import '../../../../core/widgets/snackbars.dart';
 
 class AddNewCutomerDialog extends ConsumerStatefulWidget {
   const AddNewCutomerDialog({super.key});
@@ -42,13 +44,9 @@ class _AddNewCutomerDialogState extends ConsumerState<AddNewCutomerDialog> {
 
     setState(() {
       nameController.text = contact.fullName ?? '';
-      phoneNumberController.text = _cleanPhoneNumber(
-        contact.selectedPhoneNumber ?? '',
-      );
+      phoneNumberController.text = contact.selectedPhoneNumber ?? '';
     });
   }
-
-  String _cleanPhoneNumber(String raw) => raw.replaceAll(RegExp(r'[^\d+]'), '');
 
   void _submit() {
     if (!formKey.currentState!.validate()) return;
@@ -59,21 +57,19 @@ class _AddNewCutomerDialogState extends ConsumerState<AddNewCutomerDialog> {
         .addNew(
           name: nameController.text.trim(),
           phoneNumber: phoneNumberController.text.trim(),
-          visitDate: dateKey(_pickedDate!),
+          visitDate: _pickedDate!.parseDate,
           notes: notes.isEmpty ? null : notes,
         );
+    if (!mounted) return;
+    if (!ref.read(queueControllerProvider).hasError) context.pop();
   }
 
   @override
   Widget build(BuildContext context) {
+    final currentBusinessDate = ref.watch(businessDateProvider);
+    final isSaving = ref.watch(queueControllerProvider).isLoading;
     ref.listen(queueControllerProvider, (prev, next) {
-      if (next is AsyncError) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(context.locale.somethingWentWrong)),
-        );
-      } else if (prev?.isLoading == true && next is AsyncData) {
-        context.pop();
-      }
+      if (next is AsyncError) showErrorSnackBar(context);
     });
     return AlertDialog(
       title: Text(context.locale.addnewcustomer, textAlign: .center),
@@ -114,8 +110,7 @@ class _AddNewCutomerDialogState extends ConsumerState<AddNewCutomerDialog> {
                   CustomTextField(
                     controller: phoneNumberController,
                     textDirection: .ltr,
-                    validator: (value) =>
-                        requiredFieldValidator(context, value),
+                    validator: (value) => phoneValidator(context, value),
                     label: context.locale.phonenumberlabel,
                     hint: context.locale.phonenumberhint,
                     keyboardType: .phone,
@@ -126,20 +121,19 @@ class _AddNewCutomerDialogState extends ConsumerState<AddNewCutomerDialog> {
                     children: [
                       CustomButton(
                         onPressed: () async {
-                          _pickedDate = await showDatePicker(
+                          final date = await showDatePicker(
                             context: context,
-                            initialDate: currentBusinessDate(DateTime.now()),
-                            firstDate: currentBusinessDate(DateTime.now()),
+                            initialDate: currentBusinessDate,
+                            firstDate: currentBusinessDate,
                             lastDate: DateTime.now().add(Duration(days: 30)),
                           );
 
-                          if (_pickedDate != null) {
-                            setState(() {
-                              dateController.text = context.dateFormater(
-                                _pickedDate!,
-                              );
-                            });
-                          }
+                          if (date == null) return;
+
+                          setState(() {
+                            _pickedDate = date;
+                            dateController.text = _pickedDate!.formate(context);
+                          });
                         },
                         padding: .symmetric(vertical: 16.h),
                         child: Icon(Icons.date_range),
@@ -172,7 +166,7 @@ class _AddNewCutomerDialogState extends ConsumerState<AddNewCutomerDialog> {
       ),
       actions: [
         CustomButton(
-          onPressed: _submit,
+          onPressed: isSaving ? null : _submit,
           backgroundColor: context.themeData.colorScheme.primary,
           child: Text(context.locale.add),
         ),
@@ -183,13 +177,5 @@ class _AddNewCutomerDialogState extends ConsumerState<AddNewCutomerDialog> {
         ),
       ],
     );
-  }
-}
-
-String? requiredFieldValidator(BuildContext context, String? value) {
-  if (value != null && value.isNotEmpty) {
-    return null;
-  } else {
-    return context.locale.requiredfield;
   }
 }

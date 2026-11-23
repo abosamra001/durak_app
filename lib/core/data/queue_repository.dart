@@ -58,9 +58,6 @@ class QueueRepository {
       )..where((a) => a.id.equals(id))).getSingleOrNull();
 
       if (current == null) return;
-      print(
-        '================================= current ${current.name},${current.id},${current.position},',
-      );
       final neighbor =
           await (_db.select(_db.appointments)
                 ..where(
@@ -81,9 +78,6 @@ class QueueRepository {
               .getSingleOrNull();
 
       if (neighbor == null) return;
-      print(
-        '================================= neighbor ${neighbor.name},${neighbor.id},${neighbor.position},',
-      );
 
       await (_db.update(_db.appointments)
             ..where((a) => a.id.equals(current.id)))

@@ -1,8 +1,8 @@
-import '../../../core/constants/constants_keys.dart';
+import '../constants/constants_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../core/providers/shared_preferences_provider.dart';
+import 'shared_preferences_provider.dart';
 
 part 'theme_provider.g.dart';
 
@@ -14,7 +14,7 @@ class AppTheme extends _$AppTheme {
   void setTheme(ThemeMode mode) {
     state = mode;
     ref
-        .watch(sharedPreferencesProvider)
+        .read(sharedPreferencesProvider)
         .setString(ConstantsKeys.themeKey, mode.name);
   }
 
@@ -26,7 +26,7 @@ class AppTheme extends _$AppTheme {
 
   ThemeMode getThemeMode() {
     final currentMode = ref
-        .watch(sharedPreferencesProvider)
+        .read(sharedPreferencesProvider)
         .getString(ConstantsKeys.themeKey);
 
     if (currentMode == ThemeMode.light.name) {

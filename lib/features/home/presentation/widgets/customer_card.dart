@@ -6,6 +6,7 @@ import '../../../../core/database/app_database.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/helpers/spacer.dart';
 import '../../../../core/providers/queue_controller.dart';
+import '../../../../core/widgets/confirm_dialog.dart';
 import '../../../../core/widgets/more_options_popup.dart';
 
 enum CardActions { moveup, movedown, cancel }
@@ -29,7 +30,7 @@ class CustomerCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MoreOptionsPopup<CardActions>(
-      onSelected: (action) {
+      onSelected: (action) async {
         final controller = ref.read(queueControllerProvider.notifier);
         switch (action) {
           case CardActions.moveup:
@@ -37,7 +38,15 @@ class CustomerCard extends ConsumerWidget {
           case CardActions.movedown:
             controller.moveDown(appointment.id);
           case CardActions.cancel:
-            controller.changeStatus(appointment.id, .canceled);
+            {
+              final confirmed = await showConfirmDailog(
+                context,
+                context.locale.askforcontinue,
+              );
+              if (confirmed) {
+                controller.changeStatus(appointment.id, .canceled);
+              }
+            }
         }
       },
       options: [
@@ -54,7 +63,10 @@ class CustomerCard extends ConsumerWidget {
             padding: EdgeInsets.all(16.r),
             decoration:
                 cardDecortion ??
-                BoxDecoration(color: context.themeData.colorScheme.surface),
+                BoxDecoration(
+                  color: context.themeData.colorScheme.surface,
+                  borderRadius: .circular(16.r),
+                ),
             child: Column(
               mainAxisAlignment: .start,
               children: [
@@ -67,7 +79,7 @@ class CustomerCard extends ConsumerWidget {
                       decoration: queueIndexDecoration,
                       child: Text(
                         '#$queueIndex',
-                        style: TextStyle(fontSize: 24.sp, fontWeight: .bold),
+                        style: context.themeData.textTheme.headlineLarge!,
                       ),
                     ),
                     horizontalSpace(14),
@@ -78,11 +90,19 @@ class CustomerCard extends ConsumerWidget {
                         children: [
                           Text(
                             appointment.name,
-                            style: context.themeData.textTheme.bodyLarge!
-                                .copyWith(fontSize: 24.sp),
+                            style: context.themeData.textTheme.titleLarge!,
                             overflow: .ellipsis,
                           ),
-                          Text(appointment.phoneNumber),
+                          Text(
+                            appointment.phoneNumber,
+                            style: context.themeData.textTheme.bodyLarge!,
+                            textDirection: .ltr,
+                          ),
+                          Text(
+                            appointment.notes ?? '',
+                            style: context.themeData.textTheme.bodySmall!,
+                            overflow: .ellipsis,
+                          ),
                         ],
                       ),
                     ),

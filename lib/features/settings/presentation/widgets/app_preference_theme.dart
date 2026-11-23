@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/helpers/spacer.dart';
-import '../../providers/theme_provider.dart';
+import '../../../../core/providers/theme_provider.dart';
 
 class AppPreferenceTheme extends ConsumerWidget {
   const AppPreferenceTheme({super.key});
@@ -23,6 +23,7 @@ class AppPreferenceTheme extends ConsumerWidget {
         Spacer(),
         DropdownButton<String>(
           value: dropDownValue,
+          underline: SizedBox(),
           items: [
             DropdownMenuItem<String>(
               value: context.locale.appthemesystem,

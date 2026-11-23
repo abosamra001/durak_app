@@ -176,6 +176,18 @@ abstract class AppLocalizations {
   /// **'Enter a name'**
   String get namehint;
 
+  /// No description provided for @shopnamelabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Shop name'**
+  String get shopnamelabel;
+
+  /// No description provided for @shopnamehint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a shop name'**
+  String get shopnamehint;
+
   /// No description provided for @addfromcontacts.
   ///
   /// In en, this message translates to:
@@ -343,6 +355,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Mark as waiting'**
   String get markaswaiting;
+
+  /// No description provided for @personalinformations.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Informations'**
+  String get personalinformations;
+
+  /// No description provided for @change.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get change;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @askforcontinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Do you want to continue?'**
+  String get askforcontinue;
+
+  /// No description provided for @onboardingintro.
+  ///
+  /// In en, this message translates to:
+  /// **'Your smart system to manage your salon\'s queue effortlessly.\n Let\'s set up your profile to get started.'**
+  String get onboardingintro;
+
+  /// No description provided for @onboardingwelcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome in'**
+  String get onboardingwelcome;
+
+  /// No description provided for @caneditlater.
+  ///
+  /// In en, this message translates to:
+  /// **'You can change this information later in settings.'**
+  String get caneditlater;
+
+  /// No description provided for @phonenotvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'This phone number is not valid!'**
+  String get phonenotvalid;
 }
 
 class _AppLocalizationsDelegate

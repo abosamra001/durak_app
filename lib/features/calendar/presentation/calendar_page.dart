@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../core/constants/enums.dart';
-import '../../../core/helpers/business_date.dart';
 import '../../../core/helpers/extensions.dart';
 import '../../../core/helpers/spacer.dart';
 import '../../../core/providers/queue_controller.dart';
@@ -31,107 +30,97 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
   @override
   Widget build(BuildContext context) {
     final appointments = ref.watch(
-      calendarQueueProvider(dateKey(_selectedDay)),
+      calendarQueueProvider(_selectedDay.parseDate),
     );
-    return Scaffold(
-      appBar: AppBar(),
-      body: Padding(
-        padding: EdgeInsets.all(12.r),
-        child: Column(
-          children: [
-            TableCalendar(
-              focusedDay: _focusedDay,
-              firstDay: DateTime.utc(DateTime.now().year, 1, 1),
-              lastDay: DateTime.utc(DateTime.now().year + 1, 1, 1),
-              locale: context.localeLangCode,
-              startingDayOfWeek: .saturday,
-              weekendDays: [DateTime.monday],
-              calendarFormat: _calendarFormat,
-              onFormatChanged: (format) => setState(() {
-                _calendarFormat = format;
-              }),
-              onDaySelected: (selectedDay, focusedDay) {
-                setState(() {
-                  _selectedDay = selectedDay;
-                  _focusedDay = focusedDay;
-                });
-              },
-              selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
-              calendarBuilders: CalendarBuilders(),
-            ),
-            CalendarStatusFilter(
-              selectedStatus: _selectedStatus,
-              onFilterStatusChanged: (status) {
-                setState(() {
-                  _selectedStatus = status;
-                });
-              },
-            ),
-            verticalSpace(16),
-            appointments.when(
-              loading: () => Center(child: CircularProgressIndicator()),
-              error: (error, _) => Center(child: Text(error.toString())),
-              data: (list) {
-                final filteredList = list
-                    .where((a) => compareStatus(a.status))
-                    .toList();
-                return filteredList.isEmpty
-                    ? Center(child: Text(context.locale.noappointmentsyet))
-                    : Expanded(
-                        child: ListView.builder(
-                          itemCount: filteredList.length,
-                          itemBuilder: ((context, index) =>
-                              MoreOptionsPopup<CalendarActions>(
-                                onSelected: (action) async {
-                                  final controller = ref.read(
-                                    queueControllerProvider.notifier,
-                                  );
-                                  switch (action) {
-                                    case CalendarActions.markAsDone:
-                                      controller.changeStatus(
-                                        filteredList[index].id,
-                                        .done,
-                                      );
-                                    case CalendarActions.markAsWaiting:
-                                      controller.changeStatus(
-                                        filteredList[index].id,
-                                        .waiting,
-                                      );
-                                    case CalendarActions.markAsCanceld:
-                                      controller.changeStatus(
-                                        filteredList[index].id,
-                                        .canceled,
-                                      );
-                                  }
-                                },
-                                options: [
-                                  PopupOption(
-                                    value: CalendarActions.markAsDone,
-                                    label: context.locale.markasdone,
-                                  ),
-                                  PopupOption(
-                                    value: CalendarActions.markAsWaiting,
-                                    label: context.locale.markaswaiting,
-                                  ),
-                                  PopupOption(
-                                    value: CalendarActions.markAsCanceld,
-                                    label: context.locale.markascanceled,
-                                  ),
-                                ],
-                                child: CalendarCustomerCard(
-                                  customerName: filteredList[index].name,
-                                  customerPhone:
-                                      filteredList[index].phoneNumber,
-                                  index: index + 1,
-                                  status: convert(filteredList[index].status),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 12.w),
+      child: Column(
+        children: [
+          TableCalendar(
+            focusedDay: _focusedDay,
+            firstDay: DateTime.utc(DateTime.now().year, 1, 1),
+            lastDay: DateTime.utc(DateTime.now().year + 1, 1, 1),
+            locale: Localizations.localeOf(context).languageCode,
+            startingDayOfWeek: .saturday,
+            weekendDays: [DateTime.monday],
+            calendarFormat: _calendarFormat,
+            onFormatChanged: (format) => setState(() {
+              _calendarFormat = format;
+            }),
+            onDaySelected: (selectedDay, focusedDay) {
+              setState(() {
+                _selectedDay = selectedDay;
+                _focusedDay = focusedDay;
+              });
+            },
+            selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+            calendarBuilders: CalendarBuilders(),
+          ),
+          CalendarStatusFilter(
+            selectedStatus: _selectedStatus,
+            onFilterStatusChanged: (status) {
+              setState(() {
+                _selectedStatus = status;
+              });
+            },
+          ),
+          verticalSpace(16),
+          appointments.when(
+            loading: () => Center(child: CircularProgressIndicator()),
+            error: (error, _) => Center(child: Text(error.toString())),
+            data: (list) {
+              final filteredList = list
+                  .where((a) => compareStatus(a.status))
+                  .toList();
+              return filteredList.isEmpty
+                  ? Center(child: Text(context.locale.noappointmentsyet))
+                  : Expanded(
+                      child: ListView.builder(
+                        itemCount: filteredList.length,
+                        itemBuilder: ((context, i) =>
+                            MoreOptionsPopup<CalendarActions>(
+                              onSelected: (action) async {
+                                ref
+                                    .read(queueControllerProvider.notifier)
+                                    .changeStatus(
+                                      filteredList[i].id,
+                                      switch (action) {
+                                        CalendarActions.markAsDone => .done,
+
+                                        CalendarActions.markAsWaiting =>
+                                          .waiting,
+
+                                        CalendarActions.markAsCanceld =>
+                                          .canceled,
+                                      },
+                                    );
+                              },
+                              options: [
+                                PopupOption(
+                                  value: CalendarActions.markAsDone,
+                                  label: context.locale.markasdone,
                                 ),
-                              )),
-                        ),
-                      );
-              },
-            ),
-          ],
-        ),
+                                PopupOption(
+                                  value: CalendarActions.markAsWaiting,
+                                  label: context.locale.markaswaiting,
+                                ),
+                                PopupOption(
+                                  value: CalendarActions.markAsCanceld,
+                                  label: context.locale.markascanceled,
+                                ),
+                              ],
+                              child: CalendarCustomerCard(
+                                customerName: filteredList[i].name,
+                                customerPhone: filteredList[i].phoneNumber,
+                                index: i + 1,
+                                status: convert(filteredList[i].status),
+                              ),
+                            )),
+                      ),
+                    );
+            },
+          ),
+        ],
       ),
     );
   }

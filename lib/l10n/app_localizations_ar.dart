@@ -48,6 +48,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get namehint => 'ادخل الإسم';
 
   @override
+  String get shopnamelabel => 'اسم الصالون';
+
+  @override
+  String get shopnamehint => 'أدخل اسم الصالون';
+
+  @override
   String get addfromcontacts => 'إضافة من جهات الاتصال';
 
   @override
@@ -130,4 +136,33 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get markaswaiting => 'علم في الانتظار';
+
+  @override
+  String get personalinformations => 'المعلومات الشخصية';
+
+  @override
+  String get change => 'تغيير';
+
+  @override
+  String get save => 'حفظ';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String get askforcontinue => 'هل تريد المتابعة؟';
+
+  @override
+  String get onboardingintro =>
+      'نظامك الذكي  لإدارة  زبائن صالونك بكل سهولة وبدون تعقيد.\n دعنا نضبط بياناتك للانطلاق.';
+
+  @override
+  String get onboardingwelcome => 'أهلاَ بيك في';
+
+  @override
+  String get caneditlater =>
+      'يمكنك تعديل هذه البيانات في أي وقت من شاشة الإعدادات';
+
+  @override
+  String get phonenotvalid => 'رقم الهاتف غير صالح!';
 }

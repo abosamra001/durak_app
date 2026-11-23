@@ -28,7 +28,8 @@ dependencies:
   drift: ^2.35.3
   drift_flutter: ^0.3.1
   table_calendar: ^3.3.0
-  flutter_launcher_icons: ^0.9.3
+  url_launcher: ^6.3.3
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -38,6 +39,17 @@ dev_dependencies:
   riverpod_lint: ^3.2.0
   build_runner: ^2.17.1
   drift_dev: ^2.35.2
+  flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/icon.png"
+  remove_alpha_ios: true
+  adaptive_icon_background: "#0A0B0F"
+  adaptive_icon_foreground: "assets/icons/icon_foreground.png"
+
+
 
 flutter:
   generate: true

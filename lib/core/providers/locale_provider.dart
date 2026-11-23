@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../core/providers/shared_preferences_provider.dart';
-import '../../../core/constants/constants_keys.dart';
+import 'shared_preferences_provider.dart';
+import '../constants/constants_keys.dart';
 
 part 'locale_provider.g.dart';
 
@@ -14,7 +14,7 @@ class AppLocale extends _$AppLocale {
   void setLocale(Locale locale) {
     state = locale;
     ref
-        .watch(sharedPreferencesProvider)
+        .read(sharedPreferencesProvider)
         .setString(ConstantsKeys.localeKey, locale.languageCode);
   }
 
@@ -28,7 +28,7 @@ class AppLocale extends _$AppLocale {
 
   Locale getCurrentLocale() {
     final locale = ref
-        .watch(sharedPreferencesProvider)
+        .read(sharedPreferencesProvider)
         .getString(ConstantsKeys.localeKey);
     if (locale == 'en') {
       return Locale('en');

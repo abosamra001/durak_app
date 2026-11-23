@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../core/themes/theme_manager.dart';
-import '../features/settings/providers/locale_provider.dart';
-import '../features/settings/providers/theme_provider.dart';
+import '../core/providers/locale_provider.dart';
+import '../core/providers/theme_provider.dart';
 import '../l10n/app_localizations.dart';
-import 'router/app_router.dart';
 
 class DurakApp extends ConsumerWidget {
-  const DurakApp({super.key});
+  final GoRouter router;
+  const DurakApp({super.key, required this.router});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -32,7 +33,7 @@ class DurakApp extends ConsumerWidget {
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
 
-          routerConfig: appRouter,
+          routerConfig: router,
         );
       },
     );
