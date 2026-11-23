@@ -14,7 +14,7 @@ class AppLocale extends _$AppLocale {
   void setLocale(Locale locale) {
     state = locale;
     ref
-        .watch(sharedPreferencesProvider)
+        .read(sharedPreferencesProvider)
         .setString(ConstantsKeys.localeKey, locale.languageCode);
   }
 

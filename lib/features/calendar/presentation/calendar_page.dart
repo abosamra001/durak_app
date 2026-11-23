@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../core/constants/enums.dart';
-import '../../../core/helpers/business_date.dart';
 import '../../../core/helpers/extensions.dart';
 import '../../../core/helpers/spacer.dart';
 import '../../../core/providers/queue_controller.dart';
@@ -31,7 +30,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
   @override
   Widget build(BuildContext context) {
     final appointments = ref.watch(
-      calendarQueueProvider(dateKey(_selectedDay)),
+      calendarQueueProvider(_selectedDay.parseDate),
     );
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 12.w),
@@ -41,7 +40,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
             focusedDay: _focusedDay,
             firstDay: DateTime.utc(DateTime.now().year, 1, 1),
             lastDay: DateTime.utc(DateTime.now().year + 1, 1, 1),
-            locale: context.localeLangCode,
+            locale: Localizations.localeOf(context).languageCode,
             startingDayOfWeek: .saturday,
             weekendDays: [DateTime.monday],
             calendarFormat: _calendarFormat,

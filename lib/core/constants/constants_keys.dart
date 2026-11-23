@@ -4,4 +4,5 @@ class ConstantsKeys {
   static final String profileNameKey = 'user_profile_name';
   static final String profilePhoneKey = 'user_profile_phone';
   static final String profileShopNameKey = 'user_profile_shop_name';
+  static final String businessDateKey = 'business_date';
 }

@@ -14,8 +14,14 @@ extension NavigationExtension on BuildContext {
   void pop() => Navigator.of(this).pop();
 }
 
-extension DateFormaterExtension on BuildContext {
-  String get localeLangCode => Localizations.localeOf(this).languageCode;
-  String dateFormater(DateTime date) =>
-      DateFormat.MMMMEEEEd(localeLangCode).format(date);
+extension BusinessDateExtension on DateTime {
+  String formate(BuildContext context) {
+    String localeLangCode = Localizations.localeOf(context).languageCode;
+    return DateFormat.MMMMEEEEd(localeLangCode).format(this);
+  }
+
+  String get parseDate =>
+      '${year.toString().padLeft(4, '0')}-'
+      '${month.toString().padLeft(2, '0')}-'
+      '${day.toString().padLeft(2, '0')}';
 }

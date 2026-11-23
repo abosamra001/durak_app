@@ -14,7 +14,7 @@ class AppTheme extends _$AppTheme {
   void setTheme(ThemeMode mode) {
     state = mode;
     ref
-        .watch(sharedPreferencesProvider)
+        .read(sharedPreferencesProvider)
         .setString(ConstantsKeys.themeKey, mode.name);
   }
 

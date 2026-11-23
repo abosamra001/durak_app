@@ -96,6 +96,7 @@ class CustomerCard extends ConsumerWidget {
                           Text(
                             appointment.phoneNumber,
                             style: context.themeData.textTheme.bodyLarge!,
+                            textDirection: .ltr,
                           ),
                           Text(
                             appointment.notes ?? '',

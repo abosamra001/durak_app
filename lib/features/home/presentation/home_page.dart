@@ -224,7 +224,6 @@ class HomePageBody extends ConsumerWidget {
                                   path: waitingList[i].phoneNumber,
                                 ),
                               );
-                              ;
 
                               if (!ok && context.mounted) {
                                 showErrorSnackBar(context);
@@ -235,6 +234,7 @@ class HomePageBody extends ConsumerWidget {
                         ],
                       ),
                     ),
+                    SliverToBoxAdapter(child: verticalSpace(80)),
                   ],
                 ),
               );

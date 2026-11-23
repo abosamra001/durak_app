@@ -16,7 +16,7 @@ class TodayDetails extends StatelessWidget {
           crossAxisAlignment: .start,
           children: [
             Text(
-              context.dateFormater(DateTime.now()),
+              DateTime.now().formate(context),
               style: context.themeData.textTheme.bodyLarge,
             ),
             Text(

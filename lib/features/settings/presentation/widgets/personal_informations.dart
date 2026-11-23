@@ -88,6 +88,7 @@ class ProfileView extends StatelessWidget {
                 profile.phoneNumber,
                 style: context.themeData.textTheme.titleMedium,
                 overflow: .ellipsis,
+                textDirection: .ltr,
               ),
             ],
           ),
