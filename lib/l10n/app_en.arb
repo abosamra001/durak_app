@@ -13,6 +13,8 @@
   "calendar": "Calendar",
   "namelabel": "Name",
   "namehint": "Enter a name",
+  "shopnamelabel": "Shop name",
+  "shopnamehint": "Enter a shop name",
   "addfromcontacts": "Add from contacts",
   "addmanually": "Add manually",
   "cancel": "Cancel",
@@ -40,5 +42,14 @@
   "movedown": "Move Down",
   "markasdone": "Mark as done",
   "markascanceled": "Mark as canceled",
-  "markaswaiting": "Mark as waiting"
+  "markaswaiting": "Mark as waiting",
+  "personalinformations": "Personal Informations",
+  "change": "Change",
+  "save": "Save",
+  "confirm": "Confirm",
+  "askforcontinue": "Do you want to continue?",
+  "onboardingintro": "Your smart system to manage your salon's queue effortlessly.\n Let's set up your profile to get started.",
+  "onboardingwelcome": "Welcome in",
+  "caneditlater": "You can change this information later in settings.",
+  "phonenotvalid": "This phone number is not valid!"
 }

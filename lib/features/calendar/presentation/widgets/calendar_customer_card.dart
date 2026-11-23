@@ -25,6 +25,7 @@ class CalendarCustomerCard extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 12.h),
       decoration: BoxDecoration(
         color: context.themeData.colorScheme.surface,
+        borderRadius: .circular(12.r),
         border: BorderDirectional(
           start: BorderSide(color: status.color, width: 8),
         ),

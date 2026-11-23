@@ -28,7 +28,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: onPressed,
-      color: backgroundColor ?? context.themeData.scaffoldBackgroundColor,
+      color: backgroundColor ?? context.themeData.colorScheme.primary,
       padding:
           padding ?? EdgeInsets.symmetric(horizontal: 34.w, vertical: 16.h),
       shape: OutlineInputBorder(

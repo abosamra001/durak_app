@@ -48,6 +48,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get namehint => 'Enter a name';
 
   @override
+  String get shopnamelabel => 'Shop name';
+
+  @override
+  String get shopnamehint => 'Enter a shop name';
+
+  @override
   String get addfromcontacts => 'Add from contacts';
 
   @override
@@ -130,4 +136,33 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get markaswaiting => 'Mark as waiting';
+
+  @override
+  String get personalinformations => 'Personal Informations';
+
+  @override
+  String get change => 'Change';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get askforcontinue => 'Do you want to continue?';
+
+  @override
+  String get onboardingintro =>
+      'Your smart system to manage your salon\'s queue effortlessly.\n Let\'s set up your profile to get started.';
+
+  @override
+  String get onboardingwelcome => 'Welcome in';
+
+  @override
+  String get caneditlater =>
+      'You can change this information later in settings.';
+
+  @override
+  String get phonenotvalid => 'This phone number is not valid!';
 }

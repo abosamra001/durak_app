@@ -1,11 +1,15 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'dart:async';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../constants/enums.dart';
 import 'queue_repository_provider.dart';
 
-class QueueController extends AsyncNotifier<void> {
+part 'queue_controller.g.dart';
+
+@Riverpod(keepAlive: true)
+class QueueController extends _$QueueController {
   @override
-  Future<void> build() async {}
+  FutureOr<void> build() {}
 
   Future<void> addNew({
     required String name,
@@ -44,7 +48,3 @@ class QueueController extends AsyncNotifier<void> {
     );
   }
 }
-
-final queueControllerProvider = AsyncNotifierProvider<QueueController, void>(
-  QueueController.new,
-);

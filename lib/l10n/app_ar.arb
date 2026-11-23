@@ -13,6 +13,8 @@
   "calendar": "التقويم",
   "namelabel": "الإسم",
   "namehint": "ادخل الإسم",
+  "shopnamelabel": "اسم الصالون",
+  "shopnamehint": "أدخل اسم الصالون",
   "addfromcontacts": "إضافة من جهات الاتصال",
   "addmanually": "إضافة يدويا",
   "cancel": "إلغاء",
@@ -40,5 +42,14 @@
   "movedown": "حرك لأسفل",
   "markasdone": "علم بمنتهي",
   "markascanceled": "علم بملغي",
-  "markaswaiting": "علم في الانتظار"
+  "markaswaiting": "علم في الانتظار",
+  "personalinformations": "المعلومات الشخصية",
+  "change": "تغيير",
+  "save": "حفظ",
+  "confirm": "تأكيد",
+  "askforcontinue": "هل تريد المتابعة؟",
+  "onboardingintro": "نظامك الذكي  لإدارة  زبائن صالونك بكل سهولة وبدون تعقيد.\n دعنا نضبط بياناتك للانطلاق.",
+  "onboardingwelcome": "أهلاَ بيك في",
+  "caneditlater": "يمكنك تعديل هذه البيانات في أي وقت من شاشة الإعدادات",
+  "phonenotvalid": "رقم الهاتف غير صالح!"
 }

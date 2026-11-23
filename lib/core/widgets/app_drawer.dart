@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../app/router/app_router.dart';
 import '../../app/router/routes.dart';
 import '../helpers/extensions.dart';
 import '../helpers/spacer.dart';
@@ -26,7 +26,6 @@ class AppDrawer extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 40,
-                  backgroundImage: AssetImage('assets/icons/hairstyle.png'),
                   backgroundColor: context.themeData.colorScheme.surface,
                 ),
                 verticalSpace(10),
@@ -49,7 +48,7 @@ class AppDrawer extends StatelessWidget {
             title: Text(context.locale.home),
             onTap: () {
               Scaffold.of(context).closeDrawer();
-              appRouter.go(Routes.homepage);
+              context.go(Routes.homepage);
             },
           ),
           ListTile(
@@ -58,10 +57,9 @@ class AppDrawer extends StatelessWidget {
               color: context.themeData.colorScheme.primary,
             ),
             title: Text(context.locale.calendar),
-            onTap: () async {
+            onTap: () {
               Scaffold.of(context).closeDrawer();
-              await Future<void>.delayed(const Duration(milliseconds: 300));
-              appRouter.push(Routes.calendarpage);
+              context.push(Routes.calendarpage);
             },
           ),
           ListTile(
@@ -72,7 +70,7 @@ class AppDrawer extends StatelessWidget {
             title: Text(context.locale.settings),
             onTap: () {
               Scaffold.of(context).closeDrawer();
-              appRouter.push(Routes.settingspage);
+              context.push(Routes.settingspage);
             },
           ),
         ],

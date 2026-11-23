@@ -6,9 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/business_date.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/helpers/spacer.dart';
+import '../../../../core/helpers/validators.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_text_field.dart';
 import '../../../../core/providers/queue_controller.dart';
+import '../../../../core/widgets/snackbars.dart';
 
 class AddNewCutomerDialog extends ConsumerStatefulWidget {
   const AddNewCutomerDialog({super.key});
@@ -62,18 +64,15 @@ class _AddNewCutomerDialogState extends ConsumerState<AddNewCutomerDialog> {
           visitDate: dateKey(_pickedDate!),
           notes: notes.isEmpty ? null : notes,
         );
+    if (!mounted) return;
+    if (!ref.read(queueControllerProvider).hasError) context.pop();
   }
 
   @override
   Widget build(BuildContext context) {
+    final isSaving = ref.watch(queueControllerProvider).isLoading;
     ref.listen(queueControllerProvider, (prev, next) {
-      if (next is AsyncError) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(context.locale.somethingWentWrong)),
-        );
-      } else if (prev?.isLoading == true && next is AsyncData) {
-        context.pop();
-      }
+      if (next is AsyncError) showErrorSnackBar(context);
     });
     return AlertDialog(
       title: Text(context.locale.addnewcustomer, textAlign: .center),
@@ -126,20 +125,21 @@ class _AddNewCutomerDialogState extends ConsumerState<AddNewCutomerDialog> {
                     children: [
                       CustomButton(
                         onPressed: () async {
-                          _pickedDate = await showDatePicker(
+                          final date = await showDatePicker(
                             context: context,
                             initialDate: currentBusinessDate(DateTime.now()),
                             firstDate: currentBusinessDate(DateTime.now()),
                             lastDate: DateTime.now().add(Duration(days: 30)),
                           );
 
-                          if (_pickedDate != null) {
-                            setState(() {
-                              dateController.text = context.dateFormater(
-                                _pickedDate!,
-                              );
-                            });
-                          }
+                          if (date == null) return;
+
+                          setState(() {
+                            _pickedDate = date;
+                            dateController.text = context.dateFormater(
+                              _pickedDate!,
+                            );
+                          });
                         },
                         padding: .symmetric(vertical: 16.h),
                         child: Icon(Icons.date_range),
@@ -172,7 +172,7 @@ class _AddNewCutomerDialogState extends ConsumerState<AddNewCutomerDialog> {
       ),
       actions: [
         CustomButton(
-          onPressed: _submit,
+          onPressed: isSaving ? null : _submit,
           backgroundColor: context.themeData.colorScheme.primary,
           child: Text(context.locale.add),
         ),
@@ -183,13 +183,5 @@ class _AddNewCutomerDialogState extends ConsumerState<AddNewCutomerDialog> {
         ),
       ],
     );
-  }
-}
-
-String? requiredFieldValidator(BuildContext context, String? value) {
-  if (value != null && value.isNotEmpty) {
-    return null;
-  } else {
-    return context.locale.requiredfield;
   }
 }

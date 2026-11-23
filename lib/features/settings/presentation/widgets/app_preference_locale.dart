@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/helpers/spacer.dart';
-import '../../providers/locale_provider.dart';
+import '../../../../core/providers/locale_provider.dart';
 
 class AppPreferenceLocale extends ConsumerWidget {
   const AppPreferenceLocale({super.key});
@@ -23,6 +23,7 @@ class AppPreferenceLocale extends ConsumerWidget {
         Spacer(),
         DropdownButton<String>(
           value: dropDownValue,
+          underline: SizedBox(),
           items: [
             DropdownMenuItem<String>(value: 'عربي', child: Text('عربي')),
             DropdownMenuItem<String>(value: 'English', child: Text('English')),

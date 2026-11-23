@@ -1,47 +1,36 @@
 import 'package:flutter/material.dart';
 
+/// Durak color palettes.
+///
+/// Light palette: #FFC7C7, #FFE2E2, #F6F6F6, #8785A2
+/// Dark palette:  #0F3040, #464858, #A56F63, #D99B7F
 class AppColors {
-  // --- Dark Theme Colors
-  static const Color darkBackground = Color(0xFF121212); // أسود الخلفية العام
-  static const Color darkSurface = Color(
-    0xFF1A1A1A,
-  ); // لون الكروت والبطاقات الداكنة
-  static const Color darkCardColor = Color(
-    0xFF2A2A2A,
-  ); // لون الكروت والبطاقات الداكنة
-  static const Color darkSurfaceLight = Color(0xFF2A2A2A); // للبطاقات الفرعية
+  // --- Light palette
+  static const Color lightBackground = Color(0xFFF6F6F6);
+  static const Color lightSurface = Color(0xFFFFE2E2);
+  static const Color lightSurfaceSubtle = Color(0xFFFFC7C7);
+  static const Color lightCardColor = Color(0xFFFFE2E2);
+  static const Color lightPrimary = Color(0xFFFFC7C7);
+  static const Color lightSecondary = Color(0xFF8785A2);
+  static const Color lightTextPrimary = Color(0xFF0F3040);
+  static const Color lightTextSecondary = Color(0xFF464858);
 
-  static const Color primaryAmber = Color(
-    0xFFF39C12,
-  ); // البرتقالي/الذهبي الأساسي (أزرار وأيقونات نشطة)
-  static const Color darkPrimaryAmber = Color(
-    0xFFD68910,
-  ); // درجة برتقالية أغمق للتفاعل
+  // --- Dark palette
+  static const Color darkBackground = Color(0xFF1B262C);
+  static const Color darkSurface = Color(0xFF464858);
+  static const Color darkCardColor = Color(0xFF464858);
+  static const Color darkSurfaceLight = Color(0xFFA56F63);
+  static const Color darkPrimary = Color(0xFFD99B7F);
+  static const Color darkSecondary = Color(0xFFA56F63);
+  static const Color darkTextPrimary = Color(0xFFF6F6F6);
+  static const Color darkTextSecondary = Color(0xFFFFE2E2);
 
-  static const Color darkTextPrimary = Color(
-    0xFFFFFFFF,
-  ); // النصوص الرئيسية بيضاء
-  static const Color darkTextSecondary = Color(
-    0xFFB0B0B0,
-  ); // النصوص الفرعية رمادية
+  // Backward-compatible names used by the existing app.
+  static const Color primaryAmber = darkPrimary;
+  static const Color darkPrimaryAmber = darkPrimary;
+  static const Color lightPrimaryAmber = lightPrimary;
 
-  // --- Light Theme Colors
-  static const Color lightBackground = Color(0xFFF8F9FA); // خلفية فاتحة ونظيفة
-  static const Color lightSurface = Color(0xFFFFFFFF); // كروت بيضاء صافية
-  static const Color lightSurfaceSubtle = Color(
-    0xFFF1F3F5,
-  ); // خلفيات ثانوية فاتحة
-
-  static const Color lightPrimaryAmber = Color(
-    0xFFE67E22,
-  ); // نفس روح البرتقالي ولكن متلائمة مع الإضاءة
-
-  static const Color lightTextPrimary = Color(0xFF212529); // نصوص سوداء واضحة
-  static const Color lightTextSecondary = Color(
-    0xFF6C757D,
-  ); // نصوص فرعية رمادية داكنة
-
-  // general colors
-  static const Color successColor = Color.fromARGB(255, 0, 163, 35);
-  static const Color errorColor = Color.fromARGB(255, 137, 7, 0);
+  // Semantic status colors (kept separate from the brand palette).
+  static const Color successColor = Color(0xFF2E8B57);
+  static const Color errorColor = Color(0xFFB3261E);
 }
